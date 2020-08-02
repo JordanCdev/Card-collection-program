@@ -11,44 +11,38 @@ namespace battlesInTime
     {
         OleDbConnection conn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; " + "Data Source=C:\\Users\\jorda\\Documents\\BattleOfTimes.accdb");
         BindingSource bs;
-        
+        DataTable tbl;
+        OleDbDataAdapter da;
+        OleDbDataReader dr;
+        DBsetup Initialise = new DBsetup();
 
-        public Invader()
-        {
+        public Invader() {
             InitializeComponent();
         }
 
-        private void Invader_Load(object sender, EventArgs e)
-        {
-           
+        private void Invader_Load(object sender, EventArgs e) {
+
             string pullData = "SELECT cardNumber, cardTitle, rarity FROM Invader WHERE owned=false ORDER BY rarity DESC";
             string owned = "SELECT owned FROM Invader";
-
-            OleDbCommand cmd = new OleDbCommand(pullData, conn);
-            OleDbCommand cmd2 = new OleDbCommand(owned, conn);
-            OleDbDataAdapter da = new OleDbDataAdapter(cmd);
-            DataTable tbl = new DataTable();
-            da.Fill(tbl);
-            bs = new BindingSource(tbl, null);
+            Initialise.Connect();
+            tbl = Initialise.tbl;
+            bs = Initialise.bs;
+            Initialise.QueryHandle(pullData, owned);
             invaderTbl.DataSource = bs;
-            conn.Open();
-            OleDbDataReader dr = cmd2.ExecuteReader();
+            da.Fill(tbl);
+            //dr = Initialise.dr;
 
-            int own = 0;
-            int notOwn = 0;
+            int own = 0, notOwn = 0;
 
-            while (dr.Read())
-            {
+            while (dr.Read()) {
                 bool check = (bool)dr["owned"];
 
-                if (check == true)
-                {
+                if (check == true) {
                     own++;
                 }
                 else notOwn++;
 
             }
-
             conn.Close();
             double total = own + notOwn;
             double stat = own / total * (100.0);
@@ -61,20 +55,17 @@ namespace battlesInTime
             chartObtained.Series["Owned"].Points[0].Color = Color.Green;
             chartObtained.Series["Owned"].Points.Add(notOwn);
             chartObtained.Series["Owned"].Points[1].Color = Color.Red;
-            //chartObtained.ChartAreas[0].RecalculateAxesScale(); //automatic
             chartObtained.ChartAreas[0].AxisY.Maximum = total;
             chartObtained.ChartAreas[0].AxisY.Interval = 25;
         }
 
-        private void goHome_Click(object sender, EventArgs e)
-        {
+        private void goHome_Click(object sender, EventArgs e) {
             Form1 goHome = new Form1();
             this.Hide();
             goHome.Show();
         }
 
-        private void Invader_FormClosing(object sender, FormClosingEventArgs e)
-        {
+        private void Invader_FormClosing(object sender, FormClosingEventArgs e) {
             Application.Exit();
         }
     }

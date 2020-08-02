@@ -14,7 +14,7 @@ namespace battlesInTime
     public partial class Exterminator : Form
     {
         public static Form1 dbAccess= new Form1();
-        OleDbConnection conn = new OleDbConnection(dbAccess.Connect());
+        OleDbConnection conn;
         BindingSource bs;
         public Exterminator()
         {

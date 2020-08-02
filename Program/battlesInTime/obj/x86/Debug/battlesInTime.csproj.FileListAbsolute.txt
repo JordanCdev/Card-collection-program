@@ -14,3 +14,19 @@ J:\Users\Jordan\Documents\Programming\Visual Studio 2015\Projects\battlesInTime\
 J:\Users\Jordan\Documents\Programming\Visual Studio 2015\Projects\battlesInTime\battlesInTime\obj\x86\Debug\battlesInTime.exe
 J:\Users\Jordan\Documents\Programming\Visual Studio 2015\Projects\battlesInTime\battlesInTime\obj\x86\Debug\battlesInTime.pdb
 J:\Users\Jordan\Documents\Programming\Visual Studio 2015\Projects\battlesInTime\battlesInTime\obj\x86\Debug\battlesInTime.csprojAssemblyReference.cache
+J:\Users\Jordan\Documents\GitHub\DoctorWho_CardCollection\Program\battlesInTime\obj\x86\Debug\battlesInTime.csprojAssemblyReference.cache
+J:\Users\Jordan\Documents\GitHub\DoctorWho_CardCollection\Program\battlesInTime\obj\x86\Debug\battlesInTime.Annihilator.resources
+J:\Users\Jordan\Documents\GitHub\DoctorWho_CardCollection\Program\battlesInTime\obj\x86\Debug\battlesInTime.Devastator.resources
+J:\Users\Jordan\Documents\GitHub\DoctorWho_CardCollection\Program\battlesInTime\obj\x86\Debug\battlesInTime.Exterminator.resources
+J:\Users\Jordan\Documents\GitHub\DoctorWho_CardCollection\Program\battlesInTime\obj\x86\Debug\battlesInTime.DBsetup.resources
+J:\Users\Jordan\Documents\GitHub\DoctorWho_CardCollection\Program\battlesInTime\obj\x86\Debug\battlesInTime.Invader.resources
+J:\Users\Jordan\Documents\GitHub\DoctorWho_CardCollection\Program\battlesInTime\obj\x86\Debug\battlesInTime.Properties.Resources.resources
+J:\Users\Jordan\Documents\GitHub\DoctorWho_CardCollection\Program\battlesInTime\obj\x86\Debug\battlesInTime.UltimateMonsters.resources
+J:\Users\Jordan\Documents\GitHub\DoctorWho_CardCollection\Program\battlesInTime\obj\x86\Debug\battlesInTime.csproj.GenerateResource.cache
+J:\Users\Jordan\Documents\GitHub\DoctorWho_CardCollection\Program\battlesInTime\obj\x86\Debug\battlesInTime.csproj.CoreCompileInputs.cache
+J:\Users\Jordan\Documents\GitHub\DoctorWho_CardCollection\Program\battlesInTime\obj\x86\Debug\battlesInTime.exe
+J:\Users\Jordan\Documents\GitHub\DoctorWho_CardCollection\Program\battlesInTime\obj\x86\Debug\battlesInTime.pdb
+J:\Users\Jordan\Documents\GitHub\DoctorWho_CardCollection\Program\battlesInTime\bin\x86\Debug\BattleOfTimes.mdb
+J:\Users\Jordan\Documents\GitHub\DoctorWho_CardCollection\Program\battlesInTime\bin\x86\Debug\battlesInTime.exe.config
+J:\Users\Jordan\Documents\GitHub\DoctorWho_CardCollection\Program\battlesInTime\bin\x86\Debug\battlesInTime.exe
+J:\Users\Jordan\Documents\GitHub\DoctorWho_CardCollection\Program\battlesInTime\bin\x86\Debug\battlesInTime.pdb

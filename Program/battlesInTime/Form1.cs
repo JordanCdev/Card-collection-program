@@ -13,26 +13,39 @@ namespace battlesInTime
 {
     public class DBsetup
     {
-        OleDbConnection con;
-        string path;
+        public OleDbConnection con;
+        public DataTable tbl;
+        public BindingSource bs;
+        public OleDbDataAdapter da;
+        public OleDbDataReader dr;
+
         public void Connect() {
-            string path = "Provider=Microsoft.ACE.OLEDB.12.0; " + "Data Source=J:\\Users\\Jordan\\Documents\\DoctorWhoCards\\BattleOfTimes.mdb";
+            string path = "Provider=Microsoft.ACE.OLEDB.12.0; " + "Data Source=J:\\Users\\Jordan\\Documents\\GitHub\\DoctorWho_CardCollection\\Database\\BattleOfTimes.mdb";
             con = new OleDbConnection(path);
+            tbl = new DataTable();
+            bs = new BindingSource(tbl, null);
             con.Open();
+        }
+        public void QueryHandle(string query) {
+            OleDbCommand cmd = new OleDbCommand(query, con);
+            da = new OleDbDataAdapter(cmd);
+            dr = cmd.ExecuteReader();
+        }
+        public void QueryHandle(string pullData, string query) {
+            OleDbCommand cmd = new OleDbCommand(pullData, con);
+            OleDbCommand cmd2 = new OleDbCommand(query, con);
+            da = new OleDbDataAdapter(cmd);
+            dr = cmd2.ExecuteReader();
         }
         public void Disconnect() {
             con.Close();
-        }
-
-        public void DataRead() {
-
         }
     }
     public partial class Form1 : Form
     {
         DBsetup process = new DBsetup();
         BindingSource bs;
-
+        OleDbDataReader dr;
         public Form1() {
             InitializeComponent();
         }
@@ -74,8 +87,8 @@ namespace battlesInTime
         private void Form1_Load(object sender, EventArgs e) {
             process.Connect();
             string count = "Select Count(*) As 'Number Owned' FROM(SELECT ID1 FROM Exterminator Where owned1 = true UNION ALL SELECT ID2 FROM Annihilator Where owned2 = true)";
-            OleDbCommand cmd = new OleDbCommand(count);
-            OleDbDataReader dr = cmd.ExecuteReader();
+            process.QueryHandle(count);
+            this.dr = process.dr;
             while (dr.Read()) {
                 total_lbl.Text = dr[0].ToString();
             }
