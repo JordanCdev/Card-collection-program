@@ -13,7 +13,7 @@ namespace battlesInTime
 {
     public partial class Exterminator : Form
     {
-        public static Form1 dbAccess= new Form1();
+        DBsetup Initialise = new DBsetup();
         OleDbConnection conn;
         BindingSource bs;
         public Exterminator()
@@ -25,6 +25,7 @@ namespace battlesInTime
         {
             string pullData = "SELECT cardNumber, cardTitle, rarity FROM Exterminator WHERE owned1=false ORDER BY rarity DESC";
             string owned = "SELECT owned1 FROM Exterminator";
+            Initialise.Connect();
             OleDbCommand cmd = new OleDbCommand(pullData, conn);
             OleDbCommand cmd2 = new OleDbCommand(owned, conn);
             OleDbDataAdapter da = new OleDbDataAdapter(cmd);

@@ -28,14 +28,18 @@ namespace battlesInTime
         }
         public void QueryHandle(string query) {
             OleDbCommand cmd = new OleDbCommand(query, con);
-            da = new OleDbDataAdapter(cmd);
-            dr = cmd.ExecuteReader();
+            cmd.ExecuteNonQuery();
         }
-        public void QueryHandle(string pullData, string query) {
-            OleDbCommand cmd = new OleDbCommand(pullData, con);
-            OleDbCommand cmd2 = new OleDbCommand(query, con);
-            da = new OleDbDataAdapter(cmd);
-            dr = cmd2.ExecuteReader();
+        public OleDbDataReader DataReader(string query) {
+            OleDbCommand cmd = new OleDbCommand(query, con);
+            OleDbDataReader dr = cmd.ExecuteReader();
+            return dr;
+        }
+        public DataTable DataTable(string query) {
+            OleDbDataAdapter da = new OleDbDataAdapter(query, con);
+            DataTable tbl = new DataTable();
+            da.Fill(tbl);
+            return tbl;
         }
         public void Disconnect() {
             con.Close();
@@ -86,9 +90,10 @@ namespace battlesInTime
 
         private void Form1_Load(object sender, EventArgs e) {
             process.Connect();
-            string count = "Select Count(*) As 'Number Owned' FROM(SELECT ID1 FROM Exterminator Where owned1 = true UNION ALL SELECT ID2 FROM Annihilator Where owned2 = true)";
+            string count = "Select Count(*) As 'Number Owned' FROM(SELECT ID1 FROM Exterminator Where owned = true UNION ALL SELECT ID2 FROM Annihilator Where owned = true)";
             process.QueryHandle(count);
-            this.dr = process.dr;
+            dr = process.DataReader(count);
+           
             while (dr.Read()) {
                 total_lbl.Text = dr[0].ToString();
             }

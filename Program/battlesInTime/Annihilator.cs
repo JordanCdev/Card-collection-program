@@ -8,7 +8,7 @@ namespace battlesInTime
 {
     public partial class Annihilator : Form
     {
-        OleDbConnection conn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; " + "Data Source=C:\\Users\\jorda\\Documents\\BattleOfTimes.accdb");
+        OleDbConnection conn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; " + "Data Source=J:\\Users\\Jordan\\Documents\\GitHub\\DoctorWho_CardCollection\\Database\\BattleOfTimes.mdb");
         BindingSource bs;
         public Annihilator()
         {
@@ -18,9 +18,9 @@ namespace battlesInTime
         private void Annihilator_Load(object sender, EventArgs e)
         {
 
-            string pullData = "SELECT cardNumber, cardTitle, rarity FROM Annihilator WHERE owned=false ORDER BY rarity DESC";
-            string owned = "SELECT owned FROM Annihilator";
-
+            string pullData = "SELECT cardNumber, cardTitle, rarity FROM Annihilator WHERE owned2=false ORDER BY rarity DESC";
+            string owned = "SELECT owned2 FROM Annihilator";
+            conn.Open();
             OleDbCommand cmd = new OleDbCommand(pullData, conn);
             OleDbCommand cmd2 = new OleDbCommand(owned, conn);
             OleDbDataAdapter da = new OleDbDataAdapter(cmd);
@@ -28,7 +28,6 @@ namespace battlesInTime
             da.Fill(tbl);
             bs = new BindingSource(tbl, null);
             annihTbl.DataSource = bs;
-            conn.Open();
             OleDbDataReader dr = cmd2.ExecuteReader();
 
             int own = 0;
@@ -36,7 +35,7 @@ namespace battlesInTime
 
             while (dr.Read())
             {
-                bool check = (bool)dr["owned"];
+                bool check = (bool)dr["owned2"];
 
                 if (check == true)
                 {
